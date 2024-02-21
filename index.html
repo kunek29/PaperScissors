@@ -8,6 +8,7 @@
 <body>
   <p id="container"></p>
   <script>
+    
     function getComputerChoice(array) {
         if (array !== undefined) {
             return array[Math.floor(Math.random() * array.length)];
@@ -23,22 +24,43 @@
         }
     }
 
-    const choices = ["paper", "rock", "scissors"];
-
-    const playerSelection = prompt(choices);
-    let choice = checkPlayerSelection(playerSelection, choices);
-    if (!choice) {
-       alert("incorrect input");
+    function checkResult(string1, string2) {
+        if (string1 === string2) {
+            alert("draw");
+        } else if (string1 === "rock" && string2 === "scissors" || string1 === "scissors" && string2 === "paper" || string1 === "paper" && string2 === "rock") {
+            alert("you win");
+            return string1;
+        } else {
+            alert("you lose");
+            return string2;
+        }
     }
 
-    const computerSelection = getComputerChoice(choices);
+    const choices = ["paper", "rock", "scissors"];
+    let playerScore = 0;
+    let computerScore = 0;
 
-    let matrix = [
-        ["RR", "RP", "RS"],
-        ["PR", "PP", "PS"],
-        ["SR", "SP", "SS"]
-    ];
-    
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt(choices);
+        let choice = checkPlayerSelection(playerSelection, choices);
+        if (!choice) {
+        alert("incorrect input");
+        }
+
+        const computerSelection = getComputerChoice(choices);
+        let result = checkResult(choice, computerSelection);
+        if (result === choice) {
+            playerScore++;
+        } else if (result === computerSelection) {
+            computerScore++;
+        }
+    };
+
+    if (playerScore > computerScore) {
+        alert("you won!");
+    } else {
+        alert("you lost");
+    };
     
   </script>
   
