@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>PaperScissors</title>
+  </head>
+<body>
+  <p id="container"></p>
+  <script>
+    function getComputerChoice(array) {
+        if (array !== undefined) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+    }
+
+    function checkPlayerSelection(string, array) {
+        lowerString = string.toLowerCase();
+        for (let i = 0; i < array.length; i++) {
+            if (lowerString === array[i]) {
+                return array[i];
+            }
+        }
+    }
+
+    const choices = ["paper", "rock", "scissors"];
+
+    const playerSelection = prompt(choices);
+    let choice = checkPlayerSelection(playerSelection, choices);
+    if (!choice) {
+       alert("incorrect input");
+    }
+
+    const computerSelection = getComputerChoice(choices);
+
+    let matrix = [
+        ["RR", "RP", "RS"],
+        ["PR", "PP", "PS"],
+        ["SR", "SP", "SS"]
+    ];
+    
+    
+  </script>
+  
+</body>
+</html>
