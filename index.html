@@ -27,7 +27,10 @@
     function checkResult(string1, string2) {
         if (string1 === string2) {
             alert("draw");
-        } else if (string1 === "rock" && string2 === "scissors" || string1 === "scissors" && string2 === "paper" || string1 === "paper" && string2 === "rock") {
+        } else if (
+                string1 === "rock" && string2 === "scissors" || 
+                string1 === "scissors" && string2 === "paper" || 
+                string1 === "paper" && string2 === "rock") {
             alert("you win");
             return string1;
         } else {
@@ -42,16 +45,16 @@
 
     for (let i = 0; i < 5; i++) {
         const playerSelection = prompt(choices);
-        let choice = checkPlayerSelection(playerSelection, choices);
-        if (!choice) {
+        let checkedPlayerSelection = checkPlayerSelection(playerSelection, choices);
+        if (!checkedPlayerSelection) {
         alert("incorrect input");
         }
 
         const computerSelection = getComputerChoice(choices);
-        let result = checkResult(choice, computerSelection);
-        if (result === choice) {
+        let winner = checkResult(choice, computerSelection);
+        if (winner === checkedPlayerSelection) {
             playerScore++;
-        } else if (result === computerSelection) {
+        } else if (winner === computerSelection) {
             computerScore++;
         }
     };
